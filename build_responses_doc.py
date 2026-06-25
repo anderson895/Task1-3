@@ -11,9 +11,19 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 doc = Document()
 
 # ----------------------------------------------------------------- styles
+BLACK = RGBColor(0, 0, 0)
+
 normal = doc.styles["Normal"]
 normal.font.name = "Calibri"
 normal.font.size = Pt(11)
+normal.font.color.rgb = BLACK
+
+# Plain black, simple formatting for all heading levels (override the
+# default coloured Word theme styles).
+for _name in ("Title", "Heading 1", "Heading 2", "Heading 3"):
+    _st = doc.styles[_name]
+    _st.font.color.rgb = BLACK
+    _st.font.name = "Calibri"
 
 
 def h1(t): doc.add_heading(t, level=1)
@@ -401,6 +411,11 @@ p("Limitations of rule-based sentiment analysis: cannot truly understand context
   "complex negation; struggles with mixed sentiment and domain-specific/idiomatic language; depends on "
   "lexicon coverage (out-of-vocabulary slang scores 0); and tends to mislabel neutral text — all visible "
   "in the ~30% error rate here.")
+
+# ---------------------------------------------------- force plain black text
+for _para in doc.paragraphs:
+    for _run in _para.runs:
+        _run.font.color.rgb = BLACK
 
 # ---------------------------------------------------------------- save
 out = os.path.join(ROOT, "Allen_Mendiola_Data_Science_Assignment.docx")
