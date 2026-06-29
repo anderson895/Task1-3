@@ -1,5 +1,5 @@
 """
-Task 2 - Part 2: Preprocessing, Scaling & Feature Selection on Telco Customer Churn
+Part 2 - Task 2: Preprocessing, Scaling & Feature Selection on Telco Customer Churn
 Dataset: WA_Fn-UseC_-Telco-Customer-Churn.csv   |   Target: Churn (Yes/No)
 
 Steps:

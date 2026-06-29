@@ -1,5 +1,5 @@
 """
-Task 3 - Part 2: Rule-Based Sentiment Analysis on Tech Tweets
+Part 3 - Task 2: Rule-Based Sentiment Analysis on Tech Tweets
 Dataset: tech_tweets.csv  (columns: tweet_id, company, tweet_text, sentiment)
 
 Pipeline:

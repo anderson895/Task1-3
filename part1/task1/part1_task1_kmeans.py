@@ -1,5 +1,5 @@
 """
-Task 1 - Part 1: Customer Segmentation with K-Means Clustering
+Part 1 - Task 1: Customer Segmentation with K-Means Clustering
 Dataset: Mall_Customers.csv
 Tools: Python + Scikit-learn + Matplotlib/Seaborn
 

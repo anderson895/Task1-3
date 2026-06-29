@@ -1,5 +1,5 @@
 """
-Task 1 - Part 2: Principal Component Analysis (PCA) on the Wine Quality Dataset
+Part 1 - Task 2: Principal Component Analysis (PCA) on the Wine Quality Dataset
 Dataset: winequality-red.csv
 
 Pipeline:

@@ -1,5 +1,5 @@
 """
-Task 2 - Part 1: Customer Segmentation with Hierarchical (Agglomerative) Clustering
+Part 2 - Task 1: Customer Segmentation with Hierarchical (Agglomerative) Clustering
 Dataset: Wholesale customers data.csv
 
 Pipeline:

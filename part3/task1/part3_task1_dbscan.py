@@ -1,5 +1,5 @@
 """
-Task 3 - Part 1: DBSCAN Clustering on the Wine Dataset
+Part 3 - Task 1: DBSCAN Clustering on the Wine Dataset
 Dataset: wine-clustering.csv (13 physicochemical features)
 
 Pipeline:

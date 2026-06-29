@@ -1,5 +1,5 @@
 """
-Builds the collated textual-responses document (.docx) for Tasks 1-3.
+Builds the collated textual-responses document (.docx) for Parts 1-3.
 Run after all task scripts have produced their figures.
 """
 import os
@@ -50,7 +50,7 @@ def add_fig(relpath, width=6.0, caption=None):
 
 
 # ============================================================ TITLE PAGE
-title = doc.add_heading("Data Science Assignment — Tasks 1–3", level=0)
+title = doc.add_heading("Data Science Assignment — Parts 1–3", level=0)
 sub = doc.add_paragraph("Clustering, Dimensionality Reduction, Feature Selection, "
                         "Time-Series Forecasting & Sentiment Analysis")
 sub.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -65,10 +65,10 @@ doc.add_paragraph(
 doc.add_page_break()
 
 # ====================================================================
-# TASK 1 - PART 1 : K-MEANS
+# PART 1 - TASK 1 : K-MEANS
 # ====================================================================
-h1("Task 1 — Part 1: Customer Segmentation with K-Means (Mall_Customers)")
-p("Script: task1/part1/task1_part1_kmeans.py")
+h1("Part 1 — Task 1: Customer Segmentation with K-Means (Mall_Customers)")
+p("Script: part1/task1/part1_task1_kmeans.py")
 h3("Method")
 bullet("Features used: Age, Annual Income (k$), Spending Score (1–100), standardised "
        "with StandardScaler. CustomerID is an identifier; Gender is kept only for profiling.")
@@ -77,9 +77,9 @@ bullet("The inertia curve bends clearly around k = 5 (elbow). The silhouette sco
        "high and stable from k = 5 (0.417) onward, peaking marginally at k = 6 (0.428). "
        "k = 5 was chosen as it sits at the elbow and yields the cleanest, most "
        "interpretable, well-separated segments.")
-add_fig("task1/part1/fig1_elbow_silhouette.png", 6.3,
+add_fig("part1/task1/fig1_elbow_silhouette.png", 6.3,
         "Figure 1.1.1 — Elbow method and silhouette analysis.")
-add_fig("task1/part1/fig3_income_vs_spending.png", 5.2,
+add_fig("part1/task1/fig3_income_vs_spending.png", 5.2,
         "Figure 1.1.2 — Final 5 segments: Annual Income vs Spending Score (centroids in black).")
 
 h3("Cluster profiles & business insights (k = 5)")
@@ -118,18 +118,18 @@ bullet("Requires k in advance and needs feature scaling: address with Elbow/Silh
 doc.add_page_break()
 
 # ====================================================================
-# TASK 1 - PART 2 : PCA
+# PART 1 - TASK 2 : PCA
 # ====================================================================
-h1("Task 1 — Part 2: PCA on the Wine Quality Dataset (winequality-red)")
-p("Script: task1/part2/task1_part2_pca.py")
+h1("Part 1 — Task 2: PCA on the Wine Quality Dataset (winequality-red)")
+p("Script: part1/task2/part1_task2_pca.py")
 h3("Preprocessing & results")
 bullet("No missing values. 11 physicochemical features were standardised (mean 0, std 1); the "
        "target `quality` was excluded from PCA.")
 bullet("Minimum components to retain ≥90% variance: 7 (cumulative variance reaches 90.83% at PC7). "
        "PC1 explains 28.2% and PC2 17.5% (45.7% together).")
-add_fig("task1/part2/fig1_explained_variance.png", 6.3,
+add_fig("part1/task2/fig1_explained_variance.png", 6.3,
         "Figure 1.2.1 — Scree plot and cumulative explained variance (90% line at 7 components).")
-add_fig("task1/part2/fig2_pca_scatter.png", 5.0,
+add_fig("part1/task2/fig2_pca_scatter.png", 5.0,
         "Figure 1.2.2 — Wines in PC1–PC2 space coloured by quality category.")
 
 h3("Interpretation / reflection")
@@ -150,7 +150,7 @@ bullet("PCA, 7 components (≥90% variance): 0.607 — essentially the same accu
        "dimensions, showing PCA preserves almost all predictive signal while reducing dimensionality.")
 bullet("PCA, 2 components: 0.538 — a clear drop, confirming the first two PCs alone are insufficient "
        "(consistent with the overlapping 2D scatter).")
-add_fig("task1/part2/fig4_classification_compare.png", 5.0,
+add_fig("part1/task2/fig4_classification_compare.png", 5.0,
         "Figure 1.2.3 — Classifier accuracy: original vs PCA-reduced features.")
 
 h3("Question 1 — How does PCA identify redundant/less-informative features?")
@@ -170,23 +170,23 @@ p("PCA maximises variance, and variance is scale-dependent. Without standardisat
 doc.add_page_break()
 
 # ====================================================================
-# TASK 1 - PART 3 : TIME SERIES
+# PART 1 - TASK 3 : TIME SERIES
 # ====================================================================
-h1("Task 1 — Part 3: Time-Series Decomposition & Forecasting")
-p("Script: task1/part3/task1_part3_timeseries.py")
+h1("Part 1 — Task 3: Time-Series Decomposition & Forecasting")
+p("Script: part1/task3/part1_task3_timeseries.py")
 h3("1. Data generation & visualisation")
 bullet("Synthetic daily series of 425 points = 365 (train) + 60 (test): linear upward trend "
        "(0.10/day) + weekly 7-day sine seasonality (amplitude 10) + Gaussian noise (mean 0, std 3).")
 bullet("The upward trend is clearly visible; the weekly pattern is strong and regular (amplitude 10 "
        "vs noise std 3); the noise is comparatively low, so the structure dominates.")
-add_fig("task1/part3/fig1_timeseries.png", 6.3, "Figure 1.3.1 — Generated time series with train/test split.")
+add_fig("part1/task3/fig1_timeseries.png", 6.3, "Figure 1.3.1 — Generated time series with train/test split.")
 
 h3("2. Decomposition (period = 7)")
 bullet("Both additive and multiplicative seasonal_decompose were applied. Because the series is "
        "built additively, the additive model captures seasonality best: its residual mean ≈ 0.009 "
        "(centred on zero). The multiplicative residuals centre on ≈ 1.0 by construction but show "
        "slightly more structure, as expected for a non-multiplicative process.")
-add_fig("task1/part3/fig2_decompose_additive.png", 5.6,
+add_fig("part1/task3/fig2_decompose_additive.png", 5.6,
         "Figure 1.3.2 — Additive decomposition (observed, trend, seasonal, residual).")
 
 h3("3–4. Forecasting (60 days) & evaluation")
@@ -194,7 +194,7 @@ p("Three methods forecast the 60-day horizon. Accuracy on the test set:")
 bullet("7-day Moving Average — MAE 7.86, MSE 80.91, MAPE 8.57%")
 bullet("Simple Exponential Smoothing (SES) — MAE 7.62, MSE 74.72, MAPE 8.42%  (best)")
 bullet("ARIMA(1,1,1) — MAE 8.64, MSE 106.68, MAPE 9.19%")
-add_fig("task1/part3/fig3_forecasts.png", 6.3, "Figure 1.3.3 — Actual vs predicted (3 methods).")
+add_fig("part1/task3/fig3_forecasts.png", 6.3, "Figure 1.3.3 — Actual vs predicted (3 methods).")
 p("SES gives the lowest errors here, but all three under-perform on the seasonal structure: none "
   "of them model the weekly cycle, so they essentially track the trend/level and miss the peaks and "
   "troughs. This is expected and motivates seasonal models (e.g. SARIMA / Holt-Winters).")
@@ -218,10 +218,10 @@ p("Discussion — Why decompose before forecasting? It exposes trend, seasonalit
 doc.add_page_break()
 
 # ====================================================================
-# TASK 2 - PART 1 : HIERARCHICAL
+# PART 2 - TASK 1 : HIERARCHICAL
 # ====================================================================
-h1("Task 2 — Part 1: Hierarchical Clustering (Wholesale customers)")
-p("Script: task2/part1/task2_part1_hierarchical.py")
+h1("Part 2 — Task 1: Hierarchical Clustering (Wholesale customers)")
+p("Script: part2/task1/part2_task1_hierarchical.py")
 h3("Method & linkage comparison")
 bullet("Channel and Region were dropped (categorical IDs). The six spend features were log1p-"
        "transformed (heavy right skew) then standardised.")
@@ -229,9 +229,9 @@ bullet("Dendrograms were built for single, complete, average and ward linkage. S
        "linkage 'chain' — they peel off 1–2 outliers and leave one giant cluster (sizes 438/1/1), so "
        "their high silhouette (~0.5) is misleading. Complete (402/33/5) and especially Ward "
        "(262/53/125) give balanced, interpretable clusters; Ward was chosen with k = 3.")
-add_fig("task2/part1/fig1_dendrograms.png", 6.3,
+add_fig("part2/task1/fig1_dendrograms.png", 6.3,
         "Figure 2.1.1 — Dendrograms for four linkage methods.")
-add_fig("task2/part1/fig3_cluster_heatmap.png", 5.6,
+add_fig("part2/task1/fig3_cluster_heatmap.png", 5.6,
         "Figure 2.1.2 — Mean annual spend per cluster (Ward, k=3).")
 
 h3("Business insights (Ward, k = 3)")
@@ -265,17 +265,17 @@ bullet("Shared with K-Means: results depend on distance metric and scaling; both
 doc.add_page_break()
 
 # ====================================================================
-# TASK 2 - PART 2 : CHURN FEATURE SELECTION
+# PART 2 - TASK 2 : CHURN FEATURE SELECTION
 # ====================================================================
-h1("Task 2 — Part 2: Preprocessing & Feature Selection (Telco Churn)")
-p("Script: task2/part2/task2_part2_churn.py")
+h1("Part 2 — Task 2: Preprocessing & Feature Selection (Telco Churn)")
+p("Script: part2/task2/part2_task2_churn.py")
 h3("1. Preprocessing & scaling")
 bullet("Dropped customerID. TotalCharges had 11 blank entries → coerced to numeric and imputed with "
        "the median. Categorical columns one-hot encoded → 40 features. Target: Churn (Yes=1).")
 bullet("Scaler boxplots: RobustScaler handles outliers best (it uses median/IQR, so extreme "
        "MonthlyCharges/TotalCharges values are compressed); StandardScaler centres values around zero "
        "(mean 0, unit variance); MinMaxScaler squeezes into [0,1] but is the most distorted by outliers.")
-add_fig("task2/part2/fig1_scaler_boxplots.png", 6.3,
+add_fig("part2/task2/fig1_scaler_boxplots.png", 6.3,
         "Figure 2.2.1 — Numeric features under MinMax / Standard / Robust scaling.")
 
 h3("2. Variance Threshold")
@@ -302,7 +302,7 @@ bullet("LassoCV (α ≈ 0.00145 by 5-fold CV) kept 21 of 40 features with non-ze
        "shrinking the rest to exactly zero. Strongest signals: TotalCharges/tenure (negative → longer "
        "tenure lowers churn), Fiber-optic internet, Month-to-month contract, Electronic-check payment, "
        "no TechSupport/OnlineSecurity (all positive → higher churn).")
-add_fig("task2/part2/fig2_lasso_coefficients.png", 5.6,
+add_fig("part2/task2/fig2_lasso_coefficients.png", 5.6,
         "Figure 2.2.2 — LASSO non-zero coefficients.")
 bullet("How LASSO handles correlated/redundant features: its L1 penalty tends to pick one feature from "
        "a correlated group and zero out the others, producing a sparse, less-redundant model — though the "
@@ -328,18 +328,18 @@ p("2. How do embedded methods (LASSO) differ from filter and wrapper methods? Fi
 doc.add_page_break()
 
 # ====================================================================
-# TASK 3 - PART 1 : DBSCAN
+# PART 3 - TASK 1 : DBSCAN
 # ====================================================================
-h1("Task 3 — Part 1: DBSCAN Clustering (Wine dataset)")
-p("Script: task3/part1/task3_part1_dbscan.py")
+h1("Part 3 — Task 1: DBSCAN Clustering (Wine dataset)")
+p("Script: part3/task1/part3_task1_dbscan.py")
 h3("Method & results")
 bullet("13 physicochemical features standardised. min_samples = 10 (data has only 178 rows). The "
        "k-distance graph (k=10) gives a knee around eps ≈ 3.1, but at that radius almost all points are "
        "density-connected into one blob — the clusters have similar density and no clear density gap.")
 bullet("Experimenting over eps × min_samples, the most informative configuration is eps = 2.2, "
        "min_samples = 10 → 2 clusters with silhouette 0.394 and 89 noise points.")
-add_fig("task3/part1/fig1_kdistance.png", 5.2, "Figure 3.1.1 — k-distance graph for choosing eps.")
-add_fig("task3/part1/fig2_dbscan_pca_tsne.png", 6.3,
+add_fig("part3/task1/fig1_kdistance.png", 5.2, "Figure 3.1.1 — k-distance graph for choosing eps.")
+add_fig("part3/task1/fig2_dbscan_pca_tsne.png", 6.3,
         "Figure 3.1.2 — DBSCAN clusters in PCA and t-SNE space (noise marked).")
 
 h3("Noise & insights")
@@ -372,18 +372,18 @@ p("eps sets the neighbourhood radius and min_samples the minimum points to form 
 doc.add_page_break()
 
 # ====================================================================
-# TASK 3 - PART 2 : SENTIMENT
+# PART 3 - TASK 2 : SENTIMENT
 # ====================================================================
-h1("Task 3 — Part 2: Rule-Based Sentiment Analysis (Tech Tweets)")
-p("Script: task3/part2/task3_part2_sentiment.py")
+h1("Part 3 — Task 2: Rule-Based Sentiment Analysis (Tech Tweets)")
+p("Script: part3/task2/part3_task2_sentiment.py")
 h3("Method & results")
 bullet("5,000 tweets (balanced: ~1,650–1,684 per class). Cleaning: lowercase; removed URLs, @mentions, "
        "the # symbol, punctuation and numbers; collapsed whitespace.")
 bullet("Polarity scored with TextBlob and VADER. Labels: polarity > 0 → positive, < 0 → negative, "
        "= 0 → neutral (VADER used its standard ±0.05 compound thresholds).")
 bullet("Accuracy vs the ground-truth labels: TextBlob 0.670, VADER 0.691.")
-add_fig("task3/part2/fig_cm_vader.png", 4.6, "Figure 3.2.1 — VADER confusion matrix.")
-add_fig("task3/part2/fig_cm_textblob.png", 4.6, "Figure 3.2.2 — TextBlob confusion matrix.")
+add_fig("part3/task2/fig_cm_vader.png", 4.6, "Figure 3.2.1 — VADER confusion matrix.")
+add_fig("part3/task2/fig_cm_textblob.png", 4.6, "Figure 3.2.2 — TextBlob confusion matrix.")
 
 h3("Interpretation & reflection")
 bullet("How well did the rule-based method perform? Moderately — ~67–69% accuracy. Both tools handle "

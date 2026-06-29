@@ -1,5 +1,5 @@
 """
-Task 1 - Part 3: Time Series Generation, Decomposition & Forecasting
+Part 1 - Task 3: Time Series Generation, Decomposition & Forecasting
 
 Dataset: synthetic time series of 365 days (train) + 60 days (test).
   Components: linear upward trend + weekly (7-day) seasonality + Gaussian noise.
